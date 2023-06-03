@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand
 from aiogram import types, Dispatcher, Bot
 from django.conf import settings
 
+from tgbot.handlers.find import find_router
 from tgbot.handlers.start import start_router
 from tgbot.middlewares.start import StartMiddleware
 
@@ -18,12 +19,12 @@ async def register_default_commands(dp):
 
 def register_all_middlewares(dp):
     dp.message.middleware(StartMiddleware())
-    pass
 
 
 def register_all_handlers(dp):
     for router in [
-        start_router
+        start_router,
+        find_router
     ]:
         dp.include_router(router)
 
