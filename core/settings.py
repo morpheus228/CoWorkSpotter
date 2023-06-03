@@ -65,11 +65,11 @@ os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'spb_beer',
-        'USER': 'django_admin',
-        'PASSWORD': 'r45uDfbh32QAHDbAF',
-        'HOST': 'db',
-        'PORT': '5433',
+        'NAME': 'DataBase1',
+        'USER': 'postgres',
+        'PASSWORD': 'Warrior87',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
