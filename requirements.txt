@@ -1,0 +1,6 @@
+aiogram==3.0.0b6
+Django==4.1.6
+environs==9.5.0
+geopy
+Pillow
+psycopg2-binary==2.9.6
