@@ -34,10 +34,10 @@ class Spotter(ABC):
 class NearSpotter(Spotter):
     def get_places(self, user_coords: Coords):
         places = list(Place.objects.values('id', 'latitude', 'longitude'))
-        print(places)
-        print("______________")
         sorted_places = sorted(places, key=lambda place: calc_distance(user_coords, Coords().from_dict(place)))
-        print(sorted_places)
         return sorted_places
 
 
+def places_all_info(places):
+    for place in places:
+        yield Place.objects.get(pk=place['id'])
