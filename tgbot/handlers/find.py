@@ -4,7 +4,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, FSInputFile
 
 from tgbot.misc import replicas, keyboards
-from tgbot.misc.funcs import NearSpotter, Coords, places_all_info
+from tgbot.misc.funcs import NearSpotter, Coords, places_all_info, Timetable
 from tgbot.misc.states import FindSG
 
 find_router = Router()
@@ -27,6 +27,11 @@ async def take_location(message: Message):
     location = Coords(message.location.latitude, message.location.longitude)
     places = spotter.get_places(location)
     for place in places_all_info(places):
-        post = replicas.post_place.substitute(name=place.name, desc=place.description, url=place.url,
-                                              w_h=place.working_hours, ymap=place.ymap)
+        tb = Timetable(place.working_hours)
+        if place.type == 'CW':
+            post = replicas.post_cowork.substitute(name=place.name, desc=place.description, url=place.url,
+                                                   w_h=tb.is_open_now(), ymap=place.ymap)
+        elif place.type == 'F':
+            post = replicas.post_food.substitute(name=place.name, desc=place.description, url=place.url,
+                                                 w_h=tb.is_open_now(), ymap=place.ymap)
         await message.answer(text=post, disable_web_page_preview=True, reply_markup=keyboards.remove)
