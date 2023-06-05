@@ -6,9 +6,9 @@ from aiogram.types import Message, CallbackQuery
 from tgbot.misc import replicas, keyboards
 from tgbot.misc.location import Location
 from tgbot.misc.place_text import get_place_text
-from tgbot.misc.spotter import NearSpotter
 from tgbot.misc.states import FindSG
 from tgbot.models import Place
+from tgbot.spotters.spotters.near_spotter import NearSpotter
 
 find_router = Router()
 
