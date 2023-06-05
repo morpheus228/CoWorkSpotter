@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from tgbot.misc import replicas
-from tgbot.misc.meta_place import MetaPlace
 from tgbot.models import Place
+from tgbot.spotters.meta_place import MetaPlace
 
 
 def get_place_text(place: Place, meta_place: MetaPlace) -> str:
