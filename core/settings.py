@@ -65,11 +65,11 @@ os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'DataBase1',
-        'USER': 'postgres',
-        'PASSWORD': 'Warrior87',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'database',
+        'USER': 'admin',
+        'PASSWORD': 'qwerty',
+        'HOST': 'db',
+        'PORT': '5433',
     }
 }
 
@@ -98,6 +98,7 @@ USE_I18N = True
 USE_TZ = True
 
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

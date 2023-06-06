@@ -1,18 +1,32 @@
 version: '3'
 
 services:
-    bot_web:
+    web:
         build: .
         ports:
-            - "8000:8000"
+            - ${WEB_PORT}:${WEB_PORT}
+        depends_on:
+            - db
+        volumes:
+            - .:/code/
+        command: python manage.py runserver 0.0.0.0:${WEB_PORT}
+
+    bot:
+        build: .
+        depends_on:
+            - db
+        volumes:
+            - .:/code/
+        command: python manage.py bot
+
     db:
         image: postgres:13
         expose:
-            - 5433
+            - ${DB_PORT}
         ports:
-            - 5433:5433
+            - ${DB_PORT}:${DB_PORT}
         environment:
-            - POSTGRES_PASSWORD=
-            - POSTGRES_USER=
-            - POSTGRES_DB=
-        command: -p 5433
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_DB=${DB_NAME}
+        command: -p ${DB_PORT}

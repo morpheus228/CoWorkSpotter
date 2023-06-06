@@ -9,11 +9,3 @@ RUN apt-get -y upgrade
 COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip
 RUN pip3 install -r requirements.txt
-
-# Install supervisor
-RUN apt-get install  -y supervisor
-COPY supervisord.conf /etc/supervisor/supervisord.conf
-
-COPY . .
-
-CMD ["/usr/bin/supervisord"]
