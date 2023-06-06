@@ -35,7 +35,7 @@ async def take_location(message: Message, state: FSMContext):
 
 @find_router.callback_query(FindSG.next_places, Text('next'))
 async def next_places(callback: CallbackQuery, state: FSMContext):
-    await callback.message.edit_text(text=callback.message.text)
+    await callback.message.edit_reply_markup(reply_markup=None)
     await send_places(callback.message, state)
 
 
