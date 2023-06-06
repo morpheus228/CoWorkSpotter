@@ -38,6 +38,10 @@ async def main():
     turn_on_logging()
     dp = Dispatcher(storage=MemoryStorage())
     dp['bot'] = Bot(token=settings.BOT_TOKEN, parse_mode='HTML')
+
+    dp['commands'] = {"/find": "Найти ближайшие коворкинги"}
+    await register_default_commands(dp)
+
     register_all_handlers(dp)
     register_all_middlewares(dp)
     await dp.start_polling(dp['bot'])
