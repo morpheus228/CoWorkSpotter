@@ -17,7 +17,7 @@ def get_place_text(place: Place, meta_place: MetaPlace) -> str:
         desc=place.description,
         url=place.url,
         w_h=w_h,
-        distance=meta_place.distance,
+        distance=round(meta_place.distance, 2),
         ymap=place.ymap)
 
 

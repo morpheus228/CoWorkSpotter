@@ -45,7 +45,7 @@ async def send_places(message: Message, state: FSMContext):
 
     if meta_places != "STOP":
         for meta_place in meta_places:
-            place = Place.objects.get(pk=meta_place.place_id)
+            place = Place.objects.get(pk=meta_place.place.id)
             text = get_place_text(place=place, meta_place=meta_place)
             await message.answer(text=text, reply_markup=keyboards.places, disable_web_page_preview=True)
 
