@@ -1,6 +1,6 @@
 from typing import List
 
-from tgbot.models import Place
+from places.models import Place
 from tgbot.spotters.meta_place import MetaPlacesAggregator, MetaPlace
 
 

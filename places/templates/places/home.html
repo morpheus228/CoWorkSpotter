@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CoWorkSpotter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'places/css/bootstrap.min.css' %}" type="text/css">
+</head>
+<body>
+
+<div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+  <div class="d-grid gap-2">
+    <button class="btn btn-outline-secondary" onclick="window.location.href = '/admin';">Админка</button>
+    <button class="btn btn-primary" onclick="window.location.href = '{% url 'add_place' %}';">Добавить новое место</button>
+  </div>
+</div>
+
+</body>
+</html>

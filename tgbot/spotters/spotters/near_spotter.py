@@ -1,7 +1,7 @@
 from typing import List
 
 from tgbot.misc.location import Location
-from tgbot.models import Place
+from places.models import Place
 
 from tgbot.spotters.spotters.spotter import Spotter
 from tgbot.spotters.applicators.filter import DistanceFilter
@@ -20,4 +20,3 @@ class NearSpotter(Spotter):
         super().generate()
         self.mpl.set_external_args(user_location=user_location)
         self.mpl.apply(DistanceSorting())
-        self.mpl.apply(DistanceFilter(max_distance=5))

@@ -17,6 +17,7 @@ services:
             - db
         volumes:
             - .:/code/
+        restart: always
         command: python manage.py bot
 
     db:
