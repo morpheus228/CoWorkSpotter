@@ -31,3 +31,10 @@ services:
             - POSTGRES_USER=${DB_USER}
             - POSTGRES_DB=${DB_NAME}
         command: -p ${DB_PORT}
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+
+volumes:
+    pgdata:
+        external: true
+
