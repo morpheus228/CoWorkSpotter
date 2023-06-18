@@ -4,3 +4,7 @@ environs==9.5.0
 geopy
 Pillow
 psycopg2-binary==2.9.6
+django-crispy-forms==2.0
+crispy_bootstrap4==2022.1
+beautifulsoup4==4.11.2
+lxml==4.9.2

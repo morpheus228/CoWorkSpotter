@@ -3,7 +3,7 @@ from typing import List
 from geopy.distance import geodesic as GD
 
 from tgbot.misc.location import Location
-from tgbot.models import Place
+from places.models import Place
 from tgbot.spotters.applicators.applicator import Applicator
 
 

@@ -1,12 +1,12 @@
 from datetime import datetime
 
 from tgbot.misc import replicas
-from tgbot.models import Place
+from places.models import Place
 from tgbot.spotters.meta_place import MetaPlace
 
 
 def get_place_text(place: Place, meta_place: MetaPlace) -> str:
-    w_h = Timetable(place.working_hours).is_open_now()
+    w_h = Timetable(place.timetable).is_open_now()
     sml1 = sml1_dict[place.type]
     sml2 = sml2_dict[place.type]
 
@@ -14,11 +14,11 @@ def get_place_text(place: Place, meta_place: MetaPlace) -> str:
         sml1=sml1,
         sml2=sml2,
         name=place.name,
-        desc=place.description,
+        desc=place.about,
         url=place.url,
         w_h=w_h,
         distance=round(meta_place.distance, 2),
-        ymap=place.ymap)
+        ymaps=place.ymaps)
 
 
 sml1_dict = {'CW': '📖',
@@ -51,14 +51,6 @@ class Timetable:
         timetable_str = ''
         for day in self.timetable.keys():
             timetable_str += f'{week[int(day) - 1]}\t{self.get_hours_by_day(day)}'
-            # opening = string_time(timetable[day][0])
-            # closing = string_time(timetable[day][1])
-            # if opening == 'Выходной':
-            #     timetable_str += f'{week[int(day) - 1]}\t{opening}\n'
-            #     continue
-            # elif opening == closing:
-            #     timetable_str += 'Круглосуточно'
-            # timetable_str += f'{week[int(day) - 1]}\t{opening}-{closing}\n'
         return timetable_str
 
     def get_hours_by_day(self, day: str) -> tuple:

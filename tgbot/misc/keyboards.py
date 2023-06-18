@@ -14,8 +14,23 @@ find = ReplyKeyboardMarkup(
 places = InlineKeyboardBuilder([
         [
             InlineKeyboardButton(
+                text="Подробнее о месте",
+                url='https://telegra.ph/Kovorking-Tochka-kipeniya-06-07-3'
+            )
+         ],
+        [
+            InlineKeyboardButton(
                 text="Следующие место ⏭",
                 callback_data="next"
+            )
+        ]
+    ]).as_markup()
+
+places_short = InlineKeyboardBuilder([
+        [
+            InlineKeyboardButton(
+                text="Подробнее о месте",
+                url='https://telegra.ph/Kovorking-Tochka-kipeniya-06-07-3'
             )
          ]
     ]).as_markup()

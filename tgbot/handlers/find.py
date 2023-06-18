@@ -1,13 +1,16 @@
+import logging
+
 from aiogram import Router, F
 from aiogram.filters import Command, Text
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
 
 from tgbot.misc import replicas, keyboards
+from tgbot.misc.keyboards import places_short
 from tgbot.misc.location import Location
 from tgbot.misc.place_text import get_place_text
 from tgbot.misc.states import FindSG
-from tgbot.models import Place
+from places.models import Place
 from tgbot.spotters.spotters.near_spotter import NearSpotter
 
 find_router = Router()
@@ -21,6 +24,7 @@ async def find(message: Message, state: FSMContext):
 
 @find_router.message(FindSG.location, F.content_type == 'text')
 async def take_not_location(message: Message):
+    await message.answer("Все збс")
     await message.answer(text=replicas.find.substitute(), reply_markup=keyboards.find)
 
 
@@ -35,7 +39,7 @@ async def take_location(message: Message, state: FSMContext):
 
 @find_router.callback_query(FindSG.next_places, Text('next'))
 async def next_places(callback: CallbackQuery, state: FSMContext):
-    await callback.message.edit_reply_markup(reply_markup=None)
+    await callback.message.edit_reply_markup(places_short)
     await send_places(callback.message, state)
 
 

@@ -26,8 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'tgbot.apps.TgbotConfig'
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'tgbot.apps.TgbotConfig',
+    'places.apps.PlacesConfig'
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -102,5 +106,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 BOT_TOKEN = env.str('BOT_TOKEN')
