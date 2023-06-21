@@ -30,25 +30,26 @@ class MinimumEntryField(forms.MultiValueField):
 
 
 class PlaceForm(forms.Form):
-    ymaps_soup = forms.CharField(label="'Ymaps page source",
-                                 widget=forms.TextInput(
-                                 attrs={'placeholder': 'Ymaps page source', 'size': '100'}), required=True)
+    ymaps_soup = forms.CharField(label="Ymaps page source", required=True)
     take_ymaps_name = forms.BooleanField(label='Брать название с Yandex Maps?', required=False)
     name = forms.CharField(label="Название", max_length=300, required=False)
     type = forms.ChoiceField(label='Тип', choices=TYPE_CHOICES)
 
-    minimum_entry = forms.CharField(label="Минимальный порог входа (ПРИМЕР: 90 - чай)", max_length=300)
+    minimum_entry = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '90; 90 руб. (чай)'}),
+                                    label="Минимальный порог входа", max_length=300)
     socket_availability = forms.BooleanField(label='Наличие розеток', required=False)
-    entertainments = forms.CharField(label="Развлечения (ПРИМЕР: телевизор, телки...)", max_length=300, required=False)
-    furniture = forms.CharField(label="Мебель (ПРИМЕР: стул, стол...)", max_length=300, required=False)
+    entertainments = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'телевизор, стриптиз'}),
+                                     label="Развлечения", max_length=300, required=False)
+    furniture = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'диваны, шест'}),
+                                label="Мебель", max_length=300, required=False)
     own_food_ability = forms.BooleanField(label='Возможность своей еды', required=False)
     food_availability = forms.BooleanField(label='Наличие еды', required=False)
     water_availability = forms.BooleanField(label='Наличие бесплатной воды', required=False)
     toilets_availability = forms.BooleanField(label='Наличие туалетов', required=False)
-    device_rental = forms.CharField(label="Аренда техники (ПРИМЕР: ноутбук, принтер...)", max_length=300,
-                                    required=False)
-    consumables_rental = forms.CharField(label="Аренда расходных материалов (ПРИМЕР: картон, линейки...)",
-                                         max_length=300, required=False)
+    device_rental = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'ноутбук, мастурбатор'}),
+                                    label="Аренда техники", max_length=300, required=False)
+    consumables_rental = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'бумага, презервативы'}),
+                                         label="Аренда расходных материалов", max_length=300, required=False)
     lecture_hall_rental = forms.BooleanField(label='Аренда лектория', required=False)
     capacity = forms.ChoiceField(label="Вместительность", choices=CAPACITY_CHOICES)
     crowded = forms.ChoiceField(label="Посещаемость", choices=ATTENDANCE_CHOICES)
