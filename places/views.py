@@ -7,7 +7,13 @@ from yandex_maps.simple_parser import YmapsParser
 
 
 def str2list(s: str):
+    if s == "":
+        return []
     return list(s.strip().split(', '))
+
+def parse_minimum_entry(s: str):
+    l = list(s.split('; '))
+    return {l[0]: l[1]}
 
 
 class HomeView(View):
@@ -36,7 +42,7 @@ class PlaceAddView(View):
                         ymaps=ymaps_data['ymaps'],
                         latitude=ymaps_data['latitude'],
                         longitude=ymaps_data['longitude'],
-                        attributes={"minimum_entry": form_data['minimum_entry'],
+                        attributes={"minimum_entry": parse_minimum_entry(form_data['minimum_entry']),
                                     "socket_availability": form_data['socket_availability'],
                                     "entertainments": str2list(form_data['entertainments']),
                                     "furniture": str2list(form_data['furniture']),
